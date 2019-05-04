@@ -29,6 +29,7 @@
 #include <iostream> // For cin and cout
 #include <stdlib.h> // For srand
 #include <stdio.h>  // For getchar
+#include <conio.h>  // For getch
 #include <string>   // For std::string
 #include <utility>  // For std::pair
 using namespace std;
@@ -43,18 +44,18 @@ int main() {
     cout << left << fixed << setprecision(2) << endl;
     cout << setw(24) << setfill('*') << "" << setfill(' ')   << endl
          << setw(23) << "*  Soul Rock v. 1.0"    << "*" << endl
-         << setw(23) << "*  By: Trevor Natiuk"   << "*" << endl 
+         << setw(23) << "*  By: Trevor Natiuk"   << "*" << endl
          << setw(23) << "*      Kaelan Willauer" << "*" << endl
          << setw(23) << "*      Noah Griffith"   << "*" << endl
          << setw(23) << "*      Jose Hernandez"  << "*" << endl
          << setw(24) << setfill('*') << "" << endl << endl;
-    
+
     string name;
     int seed;
     cout << "Enter username: ";
     getline(cin, name);
     if (name.empty()) name = "Anonymous";
-    
+
     while (true) {
         cout << "Enter seed: ";
         cin >> seed;
@@ -67,12 +68,12 @@ int main() {
         break;
     }
     srand(seed);
-    
+
     // Generate game
     HUD mainHUD;
     mainHUD.updateBoard();
     pair<int, int> playerPos = mainHUD.player.getPosition();
-    
+
     // Main loop
     char choice;
     while (choice != 'x') {
@@ -83,10 +84,8 @@ int main() {
             cout << "There is an item here. Enter 'y' to pick up.\n";
         }
         cout << ">> ";
-        
-        system ("/bin/stty raw");
-        choice = getchar();
-        system ("/bin/stty cooked");
+
+        choice = getch();
         choice = tolower(choice);
         switch (choice) {
             case 'y':
@@ -104,18 +103,18 @@ int main() {
             default:
                 mainHUD.player.move(choice);
                 mainHUD.updateBoard();
-                
+
         }
         playerPos = mainHUD.player.getPosition();
     }
     saveGame(name, mainHUD.player.getSteps(), seed);
     displayLeaderBoard();
-    
+
     return 0;
 }
 
 bool endGame(pair<int, int> &playerPos, HUD &mainHUD) {
-    
+
     return ((playerPos.first == 0 && playerPos.second == 0) && mainHUD.hasAllStones());
 }
 

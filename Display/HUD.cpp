@@ -13,16 +13,17 @@ HUD::HUD() {
 
 void HUD::updateBoard() {
     map.updateBoard();
+    cout << endl; //NEEDS FIXING
 }
 
 void HUD::print(pair<int, int> position) {
     // First line
-    cout << "\e[1;1H\e[2J"; // CLS
+	system("cls");
     cout << left << setw(61) << setfill('-') << "" << endl;
     cout << setw(30) << setfill(' ') << "|" << "| "
          << setw(28) << "Inventory:" << "|"
          << endl;
-    
+
     // Each line with map and inventory items
     int inventoryItem = 0;
     (map.board)[position.first][position.second] = '.';
@@ -36,7 +37,7 @@ void HUD::print(pair<int, int> position) {
                         cout << "|";
                 } else
                     cout << "  ";
-                
+
             }
         } else
             cout << setw(27) << "|";
@@ -56,7 +57,7 @@ void HUD::print(pair<int, int> position) {
         }
         cout << "|" << endl;
     }
-    cout << setw(30) << "|" 
+    cout << setw(30) << "|"
          << "| Steps taken: " << setw(15) << player.getSteps() << "|" << endl;
     cout << setw(61) << setfill('-') << "" << endl;
     (map.board)[position.first][position.second] = ' ';
