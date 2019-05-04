@@ -3,6 +3,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <ctype.h>
+
 using namespace std;
 
 Scroll::Scroll() {

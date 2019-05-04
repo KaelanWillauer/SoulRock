@@ -119,7 +119,7 @@ bool endGame(pair<int, int> &playerPos, HUD &mainHUD) {
 }
 
 void displayFullInventory(Player* player) {
-    cout << "\e[1;1H\e[2J"; // CLS
+    //CLS HERE
     cout << "Inventory: " << endl;
     for (int i = 0; i < player->invSize(); ++i) {
         cout << "- " << player->displayInventory(i) << endl;

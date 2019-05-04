@@ -59,15 +59,15 @@ void Player::move(char step) {
             if (position.second != 63)
                 position.second++;
             addStep();
-            break;    
+            break;
     }
 }
 void Player::pickUpItem(pair<int,int>position, Map* map){
-    
+
     if(!(map->isOccupied(position))){
         return;
     }
-    
+
     Checkpoint flag = map->getItem(position, false);
     switch (flag) {
         case OBT_WHTSCR:
@@ -136,7 +136,8 @@ void Player::pickUpItem(pair<int,int>position, Map* map){
         case OBT_PPLFDR:
             displayFinder(map->getFinder(PURPLE));
             break;
-            
+		default:
+			break;
     }
     inventory.setFlag(flag);
     map->removeItem(position);
@@ -163,9 +164,8 @@ void key() {
 void displayRiddle(Scroll* scroll) {
     string choice;
     while (true) {
-        cout << "\e[1;1H\e[2J"; // CLS
+        //CLS HERE
         cout << "Q: " << scroll->displayRiddle();
-        cout << "\n\nA: ";
         getline(cin, choice);
         if (scroll->checkAnswer(choice)) {
             cout << "Correct!" << endl;
@@ -176,7 +176,7 @@ void displayRiddle(Scroll* scroll) {
 }
 
 void displayFinder(Finder* finder) {
-    cout << "\e[1;1H\e[2J"; // CLS
+    //CLS HERE
     cout << finder->displayHint() << endl << endl;
     key();
 }

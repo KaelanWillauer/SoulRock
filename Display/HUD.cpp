@@ -18,7 +18,7 @@ void HUD::updateBoard() {
 
 void HUD::print(pair<int, int> position) {
     // First line
-	system("cls");
+	//CLS HERE
     cout << left << setw(61) << setfill('-') << "" << endl;
     cout << setw(30) << setfill(' ') << "|" << "| "
          << setw(28) << "Inventory:" << "|"
