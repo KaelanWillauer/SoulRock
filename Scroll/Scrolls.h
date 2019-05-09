@@ -9,7 +9,7 @@ using namespace std;
 class Scroll{
     public:
         Scroll();  // creates riddle and assigns riddle and answer
-        string displayRiddle() { return riddle; }
+        string showRiddle() { return riddle; }
         string getAnswer() { return answer; }
         bool scrollFound;
         bool checkAnswer(string);       // asks the user for there answer and checks whether its correct or not

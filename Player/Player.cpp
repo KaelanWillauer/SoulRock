@@ -158,14 +158,14 @@ string Player::displayInventory(int argument){
 
 void key() {
     cout << "Press enter to continue...";
-    cin.ignore(1000, '\n');
+    cin.ignore();
 }
 
 void displayRiddle(Scroll* scroll) {
     string choice;
     while (true) {
-        //CLS HERE
-        cout << "Q: " << scroll->displayRiddle();
+        system("cls");
+        cout << "Q: " << scroll->showRiddle();
         getline(cin, choice);
         if (scroll->checkAnswer(choice)) {
             cout << "Correct!" << endl;
@@ -176,7 +176,7 @@ void displayRiddle(Scroll* scroll) {
 }
 
 void displayFinder(Finder* finder) {
-    //CLS HERE
+    system("cls");
     cout << finder->displayHint() << endl << endl;
     key();
 }
