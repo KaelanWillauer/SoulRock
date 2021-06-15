@@ -1,4 +1,4 @@
-# SoulRock
+# SoulRock (first project)
 A dungeon adventure game. Collect stones and solve riddles to escape!
 
 ## Game Overview
